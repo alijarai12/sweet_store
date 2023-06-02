@@ -1,0 +1,32 @@
+{% extends 'app/base.html' %}
+
+{% block title %}Register{% endblock title %}
+
+
+{% block main-content %} 
+
+<br>
+<br>
+<div class="container mt-5">
+
+<h1>profile page</h1>
+<h3>Welcome {{user}}</h3>
+
+<h4>
+    <a href="{% url 'add-address' %}">Add New Address
+    </a>
+</h4>
+<br>
+<b>Addresses :</b>
+{% for add in address %}
+{{add.address}},
+{% endfor %}
+<br>
+<br>
+<p><a class="btn btn-outline-primary btn-large" href="{% url 'orders' %}">My Orders »</a></p>
+
+
+<a href="{% url 'logout' %}">Logout</a>
+</div>
+
+{% endblock main-content %}

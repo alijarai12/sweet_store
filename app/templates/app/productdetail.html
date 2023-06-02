@@ -1,0 +1,49 @@
+<!-- extending base.html -->
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Product Detail{% endblock title %}
+
+{% block main-content %}
+<br>
+<br>
+<br>
+<div class="container overflow-hidden text-center">
+    <div class="row gx-5">
+        <div class="col">
+            {% for p in product %}
+            <img src="{{p.product_image.url}} " alt="" height="200px">
+            {% endfor %}
+        </div>
+
+        <div class="col">
+            {% for p in product %}
+            <h3>{{p.name}}</h3>
+                <hr>
+
+                   <p>{{p.description}}</p>
+                   <h5>Per {{p.unit}}</h5>
+                   <h4>Rs. {{p.price}} </h4>
+                
+
+
+                <div class="row align-items-stretch mb-4">
+                    <div class="col-sm-5 pr-sm-0">
+                       
+                    </div>
+    
+                    <div class="col-sm-3 pl-sm-0">
+                        <form action="{% url 'add_to_cart' %}">
+                            <input type="hidden" name="prod_id" value="{{p.id}}" id="product_id">
+                            <button type="submit" class="btn btn-dark btn-lg btn-block h-100 d-flex align-items-center justify-content-center px-0">Add to Cart</button>
+                        </form>
+                    
+                    </div>
+                
+                <hr>
+
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock main-content %}

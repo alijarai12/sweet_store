@@ -1,0 +1,37 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Register{% endblock title %}
+
+
+{% block main-content %} 
+
+<br>
+<br>
+<div class="container">
+    <div class="row">
+
+    {% for cat in category %}  
+    <h2>{{cat.category_name}}</h2>
+        
+        {% for p in cat.products.all %}
+
+        <div class="col-lg-4">
+            <div class="box-element product">
+                <a href="{% url 'productdetail' p.id %}" class="btn">
+                    <div class="item"><img class="thumbnail" src="{{p.product_image.url}}" alt="" height="200px"><br>
+                        <span class="fw-bold">{{p.name}}</span><br>
+                        <span class="fw-bold">Per {{p.unit}}</span><br><span class="fs-5">Rs.{{p.price}}</span></div></a>
+                    
+            </div>
+        </div>
+
+
+        {% endfor %}
+    {% endfor %} 
+    <br>
+
+</div>           
+</div>
+
+{% endblock main-content %}
